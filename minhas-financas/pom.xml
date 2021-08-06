@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.alex</groupId>
-    <artifactId>minhasfinancas</artifactId>
+    <artifactId>minhas-financas</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>minhasfinancas</name>
+    <name>minhas-financas</name>
     <description>Projeto para gerenciamento de finançaas pessoais</description>
     <properties>
         <java.version>1.8</java.version>

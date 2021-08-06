@@ -1,5 +1,7 @@
 package com.alex.minhasfinancas.model.entity;
 
+import com.alex.minhasfinancas.model.enums.StatusLancamento;
+import com.alex.minhasfinancas.model.enums.TipoLancamento;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -13,34 +15,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-/**
- *
- * @author Alex
- */
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@Builder
 @Entity
 @Table(name = "lancamento", schema = "financas")
 public class Lancamento {
 
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String descricao;
-    
-    @Column
+
     private Integer mes;
 
-    @Column
     private Integer ano;
 
     @ManyToOne
@@ -54,11 +46,9 @@ public class Lancamento {
     @Convert(converter = Jsr310JpaConverters.LocalDateConverter.class)
     private LocalDate dataCadastro;
 
-    @Column
     @Enumerated(value = EnumType.STRING)
     private TipoLancamento tipo;
 
-    @Column
     @Enumerated(value = EnumType.STRING)
     private StatusLancamento status;
 

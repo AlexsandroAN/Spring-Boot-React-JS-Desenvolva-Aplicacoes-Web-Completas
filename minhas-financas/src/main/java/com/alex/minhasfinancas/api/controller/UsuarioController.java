@@ -1,5 +1,6 @@
 package com.alex.minhasfinancas.api.controller;
 
+//<editor-fold defaultstate="collapsed" desc=">>> Imports">
 import com.alex.minhasfinancas.api.dto.UsuarioDTO;
 import com.alex.minhasfinancas.exception.ErroAutenticacao;
 import com.alex.minhasfinancas.exception.RegraNegocioException;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+//</editor-fold>
 
 @RestController
 @RequestMapping("/api/usuarios")

@@ -3,6 +3,7 @@ package com.alex.minhasfinancas.service;
 import com.alex.minhasfinancas.model.entity.Lancamento;
 import com.alex.minhasfinancas.model.enums.StatusLancamento;
 import java.util.List;
+import java.util.Optional;
 
 public interface LancamentoService {
 
@@ -18,4 +19,6 @@ public interface LancamentoService {
 
     void validar(Lancamento lancamento);
 
+    Optional<Lancamento> obterPorId(Long id);
+    
 }

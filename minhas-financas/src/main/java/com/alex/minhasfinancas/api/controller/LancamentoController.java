@@ -11,6 +11,7 @@ import com.alex.minhasfinancas.service.LancamentoService;
 import com.alex.minhasfinancas.service.UsuarioService;
 import java.util.List;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,14 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/lancamentos")
+@RequiredArgsConstructor // Cria construtor com todos argumentos obrigátorio, que terminam com final
 public class LancamentoController {
 
-    private LancamentoService service;
-    private UsuarioService usuarioService;
-
-    public LancamentoController(LancamentoService service) {
-        this.service = service;
-    }
+    private final LancamentoService service;
+    private final UsuarioService usuarioService;
 
     @GetMapping
     public ResponseEntity buscar(
@@ -110,8 +108,13 @@ public class LancamentoController {
                 .orElseThrow(() -> new RegraNegocioException("Usuário não encontrado para o Id informado"));
 
         lancamento.setUsuario(usuario);
-        lancamento.setTipo(TipoLancamento.valueOf(dto.getTipo()));
-        lancamento.setStatus(StatusLancamento.valueOf(dto.getStatus()));
+        if (dto.getTipo() != null) {
+            lancamento.setTipo(TipoLancamento.valueOf(dto.getTipo()));
+        }
+
+        if (dto.getStatus() != null) {
+            lancamento.setStatus(StatusLancamento.valueOf(dto.getStatus()));
+        }
 
         return lancamento;
     }
